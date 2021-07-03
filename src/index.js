@@ -4,6 +4,7 @@ import countryTemplate from "./templates/country_list.hbs";
 import getRefs from './js/get_refs';
 
 import API from './js/fetchCountries';
+//import makeCard from './js/renderCountryCard';
 
 const debounce = require('lodash.debounce');
  import { defaultModules } from '@pnotify/core';
@@ -59,6 +60,10 @@ function renderCountryCard(country) {
     else if ((country.length > 2 && country.length < 10)) {
         let markCountryUp = countryTemplate(country);
         refs.countryList.innerHTML = markCountryUp;
+
+        const myNotice = notice({
+         text: "I'm a notice."
+         });
     }
         
     else{
@@ -86,4 +91,5 @@ function onFetchError(error) {
 function inputClickCleaner() {
     refs.formRef.value = '';
     refs.countryEl.innerHTML = '';
+    refs.countryList.innerHTML = '';
 }
