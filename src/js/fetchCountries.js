@@ -7,6 +7,7 @@ function fetchCountries(someCountry) {
 
             return response.json();
         })
+   
 };
 
 export default { fetchCountries };

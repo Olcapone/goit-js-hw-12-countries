@@ -36,9 +36,15 @@
   &:not(:last-child) {
     margin-bottom: 10px;
   }
+}
+
+.link {
+  text-decoration: none;
+  font-style: normal;
 
   &:hover,
   &:focus {
-    color: 8a9ee3;
+    color: #8a9ee3;
+    outline: none;
   }
 }

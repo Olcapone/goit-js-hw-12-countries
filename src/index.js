@@ -16,10 +16,6 @@ const debounce = require('lodash.debounce');
         text: 'Notice me, friend!'
       });
     
-    // // Automatically set the type.
-    // const myNotice = notice({
-    // text: "I'm a notice."
-    // });
 
 //----------initialisation refs---
 
@@ -28,8 +24,8 @@ const refs = getRefs();
 //-----------добавляем слушатель----
 
 refs.formRef.addEventListener('input', debounce(onSearch, 500));
-refs.formRef.addEventListener('click', inputClickCleaner)
-
+refs.formRef.addEventListener('click', inputClickCleaner);
+refs.countryList.addEventListener('click', onClick);
 //-----------основная функция--------
 
 function onSearch(e) {
@@ -44,13 +40,26 @@ function onSearch(e) {
 
 };
 
+function onClick(e) {
+    e.preventDefault();
+    
+    let someCountry = e.target.textContent;
+    
+    if (e.target.nodeName === 'A') {
+        API.fetchCountries(someCountry)
+            .then(renderCountryCard)
+            .catch(onFetchError);
+        
+    }
+
+}
+
 //--- рисуем карточки
     
 function renderCountryCard(country) {
-    console.log(country.length);
 
-    if (country.length > 10) {
-        const myInfo = info({
+     if (country.length > 10) {
+        return info({
         text: "Too many matches found. Please enter a more specific query!"
     });
     }
@@ -65,6 +74,8 @@ function renderCountryCard(country) {
          text: "I'm a notice."
          });
     }
+    
+  
         
     else{
 
