@@ -7,11 +7,10 @@ import API from './js/fetchCountries';
 //import makeCard from './js/renderCountryCard';
 
 const debounce = require('lodash.debounce');
- import { defaultModules } from '@pnotify/core';
+ 
  import { alert,  notice, info, success, error } from '../node_modules/@pnotify/core/dist/PNotify.js';
  import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
-     // defaultModules.set(PNotifyMobile, {});
-     
+
     const myAlert = alert({
         text: 'Notice me, friend!'
       });
@@ -90,13 +89,12 @@ function renderCountryCard(country) {
 
 //----- упс ошибка
 
-function onFetchError(error) {
-    console.log(error);
-    const myError = error({
-    text: "I'm an error message."
-});
-}
-
+function onFetchError(someError) {
+    console.log(someError);
+       const someEr = error({
+    text: "Oops, try again!"
+    });
+};
 //------ очистка
 
 function inputClickCleaner() {
