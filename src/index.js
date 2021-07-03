@@ -23,7 +23,7 @@ const refs = getRefs();
 
 //-----------добавляем слушатель----
 
-refs.formRef.addEventListener('input', debounce(onSearch, 500));
+refs.formRef.addEventListener('input', debounce(onSearch, 700));
 refs.formRef.addEventListener('click', inputClickCleaner);
 refs.countryList.addEventListener('click', onClick);
 //-----------основная функция--------

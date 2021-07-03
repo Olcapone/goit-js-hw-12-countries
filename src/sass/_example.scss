@@ -32,9 +32,15 @@
   list-style: none;
 }
 
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .card {
   &:not(:last-child) {
-    margin-bottom: 10px;
+    margin-right: 50px;
   }
 }
 
