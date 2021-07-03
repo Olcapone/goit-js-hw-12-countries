@@ -9,6 +9,10 @@
   background-repeat: repeat;
   background-size: cover;
   background-position: center top;
+
+  @media screen and (max-width: 767px) {
+    padding: 90px 0px;
+  }
 }
 
 .container {

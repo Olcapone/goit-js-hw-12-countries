@@ -1,8 +1,8 @@
 import './sass/main.scss';
 import countryCard from './templates/country_cards.hbs';
 import countryTemplate from "./templates/country_list.hbs";
-import getRefs from './js/get_refs';
 
+import getRefs from './js/get_refs';
 import API from './js/fetchCountries';
 //import makeCard from './js/renderCountryCard';
 
@@ -22,7 +22,7 @@ const refs = getRefs();
 
 //-----------добавляем слушатель----
 
-refs.formRef.addEventListener('input', debounce(onSearch, 700));
+refs.formRef.addEventListener('input', debounce(onSearch, 500));
 refs.formRef.addEventListener('click', inputClickCleaner);
 refs.countryList.addEventListener('click', onClick);
 //-----------основная функция--------
@@ -57,10 +57,7 @@ function onClick(e) {
     
 function renderCountryCard(country) {
 
-     if (country.length > 10) {
-        return info({
-        text: "Too many matches found. Please enter a more specific query!"
-    });
+     if (country.length > 10) {  return info({  text: "Too many matches found. Please enter a more specific query!" });
     }
 
     //--- рисуем список
@@ -69,31 +66,21 @@ function renderCountryCard(country) {
         let markCountryUp = countryTemplate(country);
         refs.countryList.innerHTML = markCountryUp;
 
-        const myNotice = notice({
-         text: "I'm a notice."
-         });
+        const myNotice = notice({ text: "I'm a notice."  });
     }
-    
-  
-        
+         
     else{
 
     let markup = countryCard(country);
     refs.countryEl.innerHTML = markup;
-    const mySuccess = success({
-    text: "I'm a success message."
-    });
+    const mySuccess = success({     text: "I'm a success message."    });
 
     }
 };
 
 //----- упс ошибка
 
-function onFetchError(someError) {
-    console.log(someError);
-       const someEr = error({
-    text: "Oops, try again!"
-    });
+function onFetchError(someError) {   return error({    text: "Oops, try again!"    });
 };
 //------ очистка
 
